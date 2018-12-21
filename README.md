@@ -1,24 +1,55 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users Table
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null_false, unique: true|
+|encrypted_password|string|null_false|
+|reset_password_token|string||
+|reset_password_sent_at|datetime||
+|remember_created_at|datetime||
+|created_at|datetime|null_false|
+|updated_at|datetime|null_false|
+|nickname|string|null_false, unique: true,index: true|
 
-* Ruby version
+### Association
+- has_many :tweets
+- has_many :members
 
-* System dependencies
+## tweets Table
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null_false|
+|user_id|integer|references, foreigh_key: true|
+|group_id|integer|references, foreigh_key: true|
+|created_at|datetime|null_false|
+|updated_at|datetime|null_false|
 
-* Database creation
+### Association
+- belongs_to :user
 
-* Database initialization
+## groups Table
 
-* How to run the test suite
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null_false,unique: true|
+|created_at|datetime|null_false|
+|updated_at|datetime|null_false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- has_many :members
 
-* Deployment instructions
+## members Table
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|references, foreigh_key: true|
+|group_id|integer|references, foreigh_key: true|
+|created_at|datetime|null_false|
+|updated_at|datetime|null_false|
+
+### Association
+- belongs_to :group
+- belongs_to :user
