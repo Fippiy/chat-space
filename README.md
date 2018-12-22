@@ -14,10 +14,10 @@
 |nickname|string|null_false, unique: true,index: true|
 
 ### Association
-- has_many :tweets
-- has_many :members
+- has_many :messages
+- has_many :group_users
 
-## tweets Table
+## messages Table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -29,6 +29,7 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :group
 
 ## groups Table
 
@@ -39,17 +40,16 @@
 |updated_at|datetime|null_false|
 
 ### Association
-- has_many :members
+- has_many :messages
+- has_many :group_users
 
-## members Table
+## group_user Table
 
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|references, foreigh_key: true|
 |group_id|integer|references, foreigh_key: true|
-|created_at|datetime|null_false|
-|updated_at|datetime|null_false|
 
 ### Association
-- belongs_to :group
 - belongs_to :user
+- belongs_to :group
