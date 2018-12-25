@@ -1,0 +1,37 @@
+.contents
+  .top
+    .top__border
+      チャットグループが作成されました
+  .side
+    .side__header
+      %h1.side__header--name
+        UserName
+      .side__header--icon
+        %a.btn{href: "#"}
+          = fa_icon "pencil-square-o"
+        %a.btn{href: "#"}
+          = fa_icon "gear"
+    .side__body
+      = render partial: "side-body"
+  .main
+    .main__header
+      .main__header--top
+        %h2.chat-name
+          ChatSpaceName
+        %a.edit{href: "#"}
+          edit
+      .main__header--bottom
+        %h3.member-head
+          Member
+        %ul.member-name
+          = render partial: "group-member"
+    .main__body
+      = render partial: "message"
+    .main__footer
+      .main__footer--form
+        %form.form__message
+          %input{type: "text", placeholder: "type a message"}
+          %a#upload-icon{href: "#"}
+            = fa_icon "image"
+          %a.form__message--submit{href: "#"}
+            SEND
