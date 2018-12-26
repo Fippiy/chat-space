@@ -1,16 +1,13 @@
 .contents
-  .top
-    .top__border
-      チャットグループが作成されました
   .side
     .side__header
       %h1.side__header--name
-        UserName
+        = current_user.nickname
       .side__header--icon
-        %a.btn{href: "#"}
-          = fa_icon "pencil-square-o"
-        %a.btn{href: "#"}
-          = fa_icon "gear"
+        = link_to do
+          = fa_icon "pencil-square-o", class: 'btn'
+        = link_to edit_user_path(current_user) do
+          = fa_icon "gear", class: 'btn'
     .side__body
       = render partial: "side-body"
   .main
@@ -18,8 +15,7 @@
       .main__header--top
         %h2.chat-name
           ChatSpaceName
-        %a.edit{href: "#"}
-          edit
+        = link_to "edit", "#", class: 'edit'
       .main__header--bottom
         %h3.member-head
           Member
@@ -31,7 +27,6 @@
       .main__footer--form
         %form.form__message
           %input{type: "text", placeholder: "type a message"}
-          %a#upload-icon{href: "#"}
-            = fa_icon "image"
-          %a.form__message--submit{href: "#"}
-            SEND
+          = link_to do
+            = fa_icon "image", id: 'upload-icon'
+          = link_to "SEND", "#", class: 'form__message--submit'
