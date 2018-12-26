@@ -9,7 +9,8 @@
         = link_to edit_user_path(current_user) do
           = fa_icon "gear", class: 'btn'
     .side__body
-      = render partial: "side-body"
+      = render "side-body"
+      / binding.pry
   .main
     .main__header
       .main__header--top
