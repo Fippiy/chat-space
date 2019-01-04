@@ -55,6 +55,7 @@
     padding-top: $HeadHeight;
     padding-bottom: $HeadHeight;
     &--box {
+      @include clearfix;
       padding-top: 46px;
       li {
         list-style: none;
