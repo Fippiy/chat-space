@@ -11,8 +11,8 @@
           Member
         %ul.member-name
           = render partial: "group-member"
-    .main__body
-      = render partial: "message"
+    .main__body.clearfix
+      = render @messages
     .main__footer
       .main__footer--form
         = form_for [@group, @message], html: {class: 'from__message'} do |f|
