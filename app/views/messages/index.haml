@@ -10,7 +10,9 @@
         %h3.member-head
           Member
         %ul.member-name
-          = render partial: "group-member"
+          - @group.users.each do |user|
+            %li.list-name
+              = user.nickname
     .main__body.clearfix
       = render @messages
     .main__footer
