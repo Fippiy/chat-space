@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # root 'messages#index'
   root 'groups#index'
   resources :users, only: [:edit, :update]
-  resources :groups, only: [:new, :edit, :create, :update] do
+  resources :groups, only: [:index, :new, :edit, :create, :update] do
     resources :messages, only: [:index, :create]
   end
 end
