@@ -15,8 +15,9 @@
       = render partial: "message"
     .main__footer
       .main__footer--form
-        %form.form__message
-          %input{type: "text", placeholder: "type a message"}
-          = link_to do
+        = form_for [@group, @message], html: {class: 'from__message'} do |f|
+          = f.text_field :text, placeholder: "type a message"
+          = f.label :image do
             = fa_icon "image", id: 'upload-icon'
-          = link_to "SEND", "#", class: 'form__message--submit'
+            = f.file_field :image, hidden: 'hidden'
+          = f.submit "SEND", id: 'message-submit'
