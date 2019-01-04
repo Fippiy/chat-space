@@ -1,33 +1,25 @@
 .contents
-  .side
-    .side__header
-      %h1.side__header--name
-        = current_user.nickname
-      .side__header--icon
-        = link_to new_group_path do
-          = fa_icon "pencil-square-o", class: 'btn'
-        = link_to edit_user_path(current_user) do
-          = fa_icon "gear", class: 'btn'
-    .side__body
-      = render "side-body"
-      / binding.pry
+  = render "side-body"
   .main
     .main__header
       .main__header--top
         %h2.chat-name
           ChatSpaceName
-        = link_to "edit", "#", class: 'edit'
+        = link_to "edit", edit_group_path(@group), class: 'edit'
       .main__header--bottom
         %h3.member-head
           Member
         %ul.member-name
-          = render partial: "group-member"
-    .main__body
-      = render partial: "message"
+          - @group.users.each do |user|
+            %li.list-name
+              = user.nickname
+    .main__body.clearfix
+      = render @messages
     .main__footer
       .main__footer--form
-        %form.form__message
-          %input{type: "text", placeholder: "type a message"}
-          = link_to do
+        = form_for [@group, @message], html: {class: 'from__message'} do |f|
+          = f.text_field :text, placeholder: "type a message"
+          = f.label :image do
             = fa_icon "image", id: 'upload-icon'
-          = link_to "SEND", "#", class: 'form__message--submit'
+            = f.file_field :image, hidden: 'hidden'
+          = f.submit "SEND", id: 'message-submit'

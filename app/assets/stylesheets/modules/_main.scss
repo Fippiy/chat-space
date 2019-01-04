@@ -55,6 +55,7 @@
     padding-top: $HeadHeight;
     padding-bottom: $HeadHeight;
     &--box {
+      @include clearfix;
       padding-top: 46px;
       li {
         list-style: none;
@@ -89,7 +90,7 @@
       margin-left: 40px;
       margin-bottom: 20px;
       height: 50px;
-      .form__message {
+      #new_message {
         input {
           &[type="text"]{
             float: left;
@@ -105,7 +106,7 @@
           color: black;
           @include position-absolute(50%,920px,-50%,0);
         }
-        &--submit {
+        #message-submit {
           line-height: 50px;
           padding: 0 20px;
           float: right;
