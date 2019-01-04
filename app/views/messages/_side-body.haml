@@ -1,8 +1,17 @@
-/ テンプレート
-.side__body--group
-  - current_user.groups.each do |group|
-    = link_to group_messages_path(group) do
-      .group-name
-        = group.name
-      .group-message
-        メッセージはまだありません。
+.side
+  .side__header
+    %h1.side__header--name
+      = current_user.nickname
+    .side__header--icon
+      = link_to new_group_path do
+        = fa_icon "pencil-square-o", class: 'btn'
+      = link_to edit_user_path(current_user) do
+        = fa_icon "gear", class: 'btn'
+  .side__body
+    .side__body--group
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .group-name
+            = group.name
+          .group-message
+            メッセージはまだありません。
