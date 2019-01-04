@@ -1,16 +1,5 @@
 .contents
-  .side
-    .side__header
-      %h1.side__header--name
-        = current_user.nickname
-      .side__header--icon
-        = link_to new_group_path do
-          = fa_icon "pencil-square-o", class: 'btn'
-        = link_to edit_user_path(current_user) do
-          = fa_icon "gear", class: 'btn'
-    .side__body
-      = render "side-body"
-      / binding.pry
+  = render "side-body"
   .main
     .main__header
       .main__header--top
