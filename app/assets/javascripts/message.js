@@ -15,8 +15,6 @@ $(function() {
 
     if (message.image == null) {
       var html_body = `${ message.text }`
-    } else if (message.text == null) {
-      var html_body = `<img src="${ message.image }">`
     } else {
       var html_body = `${ message.text }<img src="${ message.image }">`
     }
