@@ -1,48 +1,48 @@
 $(function() {
 
-  var user_list = $("#user-search-result");
+  var userSearchList = $("#user-search-result");
 
   function appendUserToSearchResult(user) {
-    var html = `<div class="chat-group-user clearfix">
-                  <p class="chat-group-user__name">${ user.nickname }</p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.nickname }">追加</a>
-                </div>`
-    user_list.append(html);
+    var appendUserSearchResultHTML = `<div class="chat-group-user clearfix">
+                                        <p class="chat-group-user__name">${ user.nickname }</p>
+                                        <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.nickname }">追加</a>
+                                      </div>`
+    userSearchList.append(appendUserSearchResultHTML);
   }
 
   function appendNoUserToSearchResult(user) {
-    var html = `<div class="chat-group-user clearfix">
-                  <p class="chat-group-user__name">${ user }</p>
-                </div>`
-    user_list.append(html);
+    var appendUserSearchResultHTML = `<div class="chat-group-user clearfix">
+                                        <p class="chat-group-user__name">${ user }</p>
+                                      </div>`
+    userSearchList.append(appendUserSearchResultHTML);
   }
 
-  function appendAddUser(userId, userNickname) {
-    var addHtml = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${ userId }'>
-                    <input name='group[user_ids][]' type='hidden' value='${ userId }'>
-                    <p class='chat-group-user__name'>${ userNickname }</p>
-                    <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
-                  </div>`
-    $('.chat-group-users').append(addHtml);
+  function appendUserToChatMember(userId, userNickname) {
+    var appendUserChatMemberHTML = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${ userId }'>
+                                      <input name='group[user_ids][]' type='hidden' value='${ userId }'>
+                                      <p class='chat-group-user__name'>${ userNickname }</p>
+                                      <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+                                    </div>`
+    $('.chat-group-users').append(appendUserChatMemberHTML);
   }
 
   $("#user-search-field").on("keyup", function() {
-    var input = $(this).val();
+    var inputUserSearch = $(this).val();
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { keyword: input },
+      data: { keyword: inputUserSearch },
       dataType: 'json'
     })
     .done(function(users) {
-      user_list.empty();
+      userSearchList.empty();
       if (users.length !== 0) {
         users.forEach(function(user) {
           appendUserToSearchResult(user);
         });
       }
       else {
-        appendNoUserToSearchResult("一致するユーザはいません");
+        appendNoUserToSearchResult("一致するユーザーはいません");
       }
     })
     .fail(function() {
@@ -50,11 +50,11 @@ $(function() {
     })
   });
 
-  user_list.on("click", ".user-search-add", function() {
+  userSearchList.on("click", ".user-search-add", function() {
     var userId = $(this).attr('data-user-id');
     var userNickname = $(this).attr('data-user-name');
     $(this).parent().remove();
-    appendAddUser(userId, userNickname);
+    appendUserToChatMember(userId, userNickname);
   });
   $(".chat-group-users").on("click", ".user-search-remove", function() {
     $(this).parent().remove();
