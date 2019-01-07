@@ -2,7 +2,7 @@ $(function() {
 
   var user_list = $("#user-search-result");
 
-  function appendUser(user) {
+  function appendUserToSearchResult(user) {
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${ user.nickname }</p>
                   <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.nickname }">追加</a>
@@ -10,7 +10,7 @@ $(function() {
     user_list.append(html);
   }
 
-  function appendNoUser(user) {
+  function appendNoUserToSearchResult(user) {
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${ user }</p>
                 </div>`
@@ -38,11 +38,11 @@ $(function() {
       user_list.empty();
       if (users.length !== 0) {
         users.forEach(function(user) {
-          appendUser(user);
+          appendUserToSearchResult(user);
         });
       }
       else {
-        appendNoUser("一致するユーザはいません");
+        appendNoUserToSearchResult("一致するユーザはいません");
       }
     })
     .fail(function() {
