@@ -43,7 +43,6 @@ $(function() {
       contentType: false
     })
     .done(function(message){
-      console.log(message);
       appendContent(message);
       $("#message_text").val("");
       $("#message_image").val("");
