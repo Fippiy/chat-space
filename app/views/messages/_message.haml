@@ -1,8 +1,8 @@
-.main__body--box.clearfix
+.main__body--box.clearfix{message_id: "#{message.id}"}
   %li.message-nickname
     = message.user.nickname
   %li.message-date
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
+    = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
   %li.message-text
     - if message.text.present?
       = message.text
