@@ -51,20 +51,21 @@ $(function() {
     var href = window.location.href;
     var regExpGroupMessagePath = RegExp(/\/groups\/[0-9]+\/messages/);
     if(href.match(regExpGroupMessagePath)) {
+      var lastMessageId = $(".main__body--box").last().attr("message_id");
       $.ajax({
         url: href,
         type: 'GET',
+        data: {
+          message: {id: lastMessageId}
+        },
         dataType: 'json',
-        processData: false,
+        processData: true,
         contentType: false
       })
       .done(function(messages){
-        var lastMessageId = $(".main__body--box").last().attr("message_id");
         if (messages.length !== 0) {
           messages.forEach(function(message) {
-          if (message.id > lastMessageId) {
             appendContent(message);
-            }
           });
         }
       })
