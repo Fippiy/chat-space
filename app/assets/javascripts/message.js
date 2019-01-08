@@ -4,7 +4,7 @@ $(function() {
 
   function appendContent(message) {
 
-    var html_head = `<div class="main__body--box clearfix">
+    var html_head = `<div class="main__body--box clearfix" message_id="${ message.id }">
                   <li class="message-nickname">
                     ${ message.nickname }
                   </li>
@@ -26,14 +26,6 @@ $(function() {
     message_list.append(html);
     $('html, body').scrollTop($(document).height());
   }
-
-  // function insertToMessageHTML(message) {
-  //   var insertMessageHTML = `<div class="main__body--box clearfix">
-  //                             <li class="message-nickname">${ nickname }</li>
-  //                             <li class="message-date">${ created_at }</li>
-  //                             <li class="message-text">${ text }</li>
-  //                           </div>`
-  // }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -61,71 +53,28 @@ $(function() {
     });
   });
 
-  // !!!!!!!!!!!!!!!!!!!!!!!自動更新
   setInterval(function() {
-  // !!!!!!!!!!!!!!!!!!!!!!!コンソールで自動更新確認
-    // console.log("自動出力表示テスト");
     var href = window.location.href;
-
     $.ajax({
-      // url: location.href.json
       url: href,
       type: 'GET',
-      // data: { date: lastMessageDate },
       dataType: 'json',
       processData: false,
       contentType: false
     })
     .done(function(messages){
-  // !!!!!!!!!!!!!!!!!!!!!!!コンソールで自動更新確認
-      console.log("done");
-      // console.log(messages);
-      // !!!!!!!!!!!!!!!!時間取得（仮置きで1/7指定)
-      // var lastMessageDate = new Date("2019/01/07 23:59:59");
-      // console.log(lastMessageDate);
-      // console.log(messages);
-      //// 最新メッセージの時間を取得
-      var lastMessageDate = new Date($(".message-date").last().text());
-      // console.log($(".message-date").last().text());
-      // console.log(lastMessageDate);
-      //// 新たに書き出すHTML枠を空にする（再更新時に残骸データをのこさないため）
-      // var insertMessageHTML = ""
-
-      // console.log(messages);
-      //// 取得したJSONと最新メッセージ時間の比較
+      var lastMessageId = $(".main__body--box").last().attr("message_id");
       if (messages.length !== 0) {
         messages.forEach(function(message) {
-        var messageDate = new Date(message.created_at);
-
-          // console.log($.type(lastMessageDate));
-          // console.log($.type(messageDate));
-          console.log(lastMessageDate);
-          console.log(messageDate);
-
-          // console.log($.type(message.created_at));
-          // console.log($.type(lastMessageDate));
-          // console.log(new Date(message.created_at));
-        if (messageDate > lastMessageDate) {
-          // HTML生成
-          // insertToMessageHTML(message);
+        if (message.id > lastMessageId) {
           appendContent(message);
           }
         });
       }
-
-
-
-
-      //// 最新データであればHTML書き出しを実施
-      // if (insertMessageHTML !== null) {
-      // if (insertMessageHTML !== null) {
-      // //// 書き出したデータを最新行に追加
-
-      // }
     })
     .fail(function() {
-  // !!!!!!!!!!!!!!!!!!!!!!!コンソールで自動更新確認
       console.log("fail");
+      alert('通信に失敗しました');
     });
   },5000);
 });
