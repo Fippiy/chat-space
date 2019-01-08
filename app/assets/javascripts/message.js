@@ -3,25 +3,21 @@ $(function() {
   var message_list = $(".main__body");
 
   function appendContent(message) {
-
     var html_head = `<div class="main__body--box clearfix" message_id="${ message.id }">
-                  <li class="message-nickname">
-                    ${ message.nickname }
-                  </li>
-                  <li class="message-date">
-                    ${ message.created_at }
-                  </li>
-                  <li class="message-text">`
-
+                      <li class="message-nickname">
+                        ${ message.nickname }
+                      </li>
+                      <li class="message-date">
+                        ${ message.created_at }
+                      </li>
+                      <li class="message-text">`
     if (message.image == null) {
       var html_body = `${ message.text }`
     } else {
       var html_body = `${ message.text }<img src="${ message.image }">`
     }
-
     var html_foot =   `</li>
                     </div>`
-
     var html = html_head + html_body + html_foot
     message_list.append(html);
     $('html, body').scrollTop($(document).height());
@@ -53,8 +49,8 @@ $(function() {
 
   setInterval(function() {
     var href = window.location.href;
-    var regPath = RegExp(/\/groups\/[0-9]+\/messages/);
-    if(href.match(regPath)) {
+    var regExpGroupMessagePath = RegExp(/\/groups\/[0-9]+\/messages/);
+    if(href.match(regExpGroupMessagePath)) {
       $.ajax({
         url: href,
         type: 'GET',
@@ -73,7 +69,6 @@ $(function() {
         }
       })
       .fail(function() {
-        console.log("fail");
         alert('通信に失敗しました');
       });
     }
