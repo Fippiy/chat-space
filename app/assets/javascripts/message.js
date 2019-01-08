@@ -30,9 +30,7 @@ $(function() {
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-
     var href = window.location.href;
-
     $.ajax({
       url: href,
       type: 'POST',
@@ -55,26 +53,29 @@ $(function() {
 
   setInterval(function() {
     var href = window.location.href;
-    $.ajax({
-      url: href,
-      type: 'GET',
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(messages){
-      var lastMessageId = $(".main__body--box").last().attr("message_id");
-      if (messages.length !== 0) {
-        messages.forEach(function(message) {
-        if (message.id > lastMessageId) {
-          appendContent(message);
-          }
-        });
-      }
-    })
-    .fail(function() {
-      console.log("fail");
-      alert('通信に失敗しました');
-    });
+    var regPath = RegExp(/\/groups\/[0-9]+\/messages/);
+    if(href.match(regPath)) {
+      $.ajax({
+        url: href,
+        type: 'GET',
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(messages){
+        var lastMessageId = $(".main__body--box").last().attr("message_id");
+        if (messages.length !== 0) {
+          messages.forEach(function(message) {
+          if (message.id > lastMessageId) {
+            appendContent(message);
+            }
+          });
+        }
+      })
+      .fail(function() {
+        console.log("fail");
+        alert('通信に失敗しました');
+      });
+    }
   },5000);
 });
