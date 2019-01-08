@@ -4,7 +4,7 @@
     .main__header
       .main__header--top
         %h2.chat-name
-          ChatSpaceName
+          = @group.name
         = link_to "edit", edit_group_path(@group), class: 'edit'
       .main__header--bottom
         %h3.member-head
