@@ -3,22 +3,20 @@ $(function() {
   var message_list = $(".main__body");
 
   function appendContent(message) {
-    var html_head = `<div class="main__body--box clearfix" message_id="${ message.id }">
-                      <li class="message-nickname">
-                        ${ message.nickname }
-                      </li>
-                      <li class="message-date">
-                        ${ message.created_at }
-                      </li>
-                      <li class="message-text">`
-    if (message.image == null) {
-      var html_body = `${ message.text }`
-    } else {
-      var html_body = `${ message.text }<img src="${ message.image }">`
-    }
-    var html_foot =   `</li>
-                    </div>`
-    var html = html_head + html_body + html_foot
+    var html_body =
+      message.image == null ? `${ message.text }`
+      : `${ message.text }<img src="${ message.image }">`;
+    var html = `<div class="  main__body--box clearfix" message_id="${ message.id }">
+                  <li class="message-nickname">
+                    ${ message.nickname }
+                  </li>
+                  <li class="message-date">
+                    ${ message.created_at }
+                  </li>
+                  <li class="message-text">
+                    ${ html_body }
+                  </li>
+                </div>`
     message_list.append(html);
     $('html, body').scrollTop($(document).height());
   }
