@@ -25,7 +25,7 @@ $(function() {
 
   function appendUserToChatMember(userId, userNickname) {
     var appendUserChatMemberHTML = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${ userId }'>
-                                      <input class='nowChatMember' name='group[user_ids][]' type='hidden' value='${ userId }'>
+                                      <input name='group[user_ids][]' type='hidden' value='${ userId }'>
                                       <p class='chat-group-user__name'>${ userNickname }</p>
                                       <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                                     </div>`
