@@ -1,6 +1,12 @@
 $(function() {
 
   var userSearchList = $("#user-search-result");
+  // var userOutputList = $('.chat-group-user input');
+  // var userOutputList = $('.chat-group-user').children().attr('class');
+  // var userOutputList = $('.chat-group-user').attr('id');
+  // console.log(userOutputList);
+
+  // var userOutputList = $('.nowChatMember').attr("value");
 
   function appendUserToSearchResult(user) {
     var appendUserSearchResultHTML = `<div class="chat-group-user clearfix">
@@ -19,7 +25,7 @@ $(function() {
 
   function appendUserToChatMember(userId, userNickname) {
     var appendUserChatMemberHTML = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${ userId }'>
-                                      <input name='group[user_ids][]' type='hidden' value='${ userId }'>
+                                      <input class='nowChatMember' name='group[user_ids][]' type='hidden' value='${ userId }'>
                                       <p class='chat-group-user__name'>${ userNickname }</p>
                                       <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                                     </div>`
@@ -37,8 +43,15 @@ $(function() {
     .done(function(users) {
       userSearchList.empty();
       if (users.length !== 0) {
+        var nowChatMembers = [];
+        $(".chat-group-user").each(function() {
+          nowChatMembers.push($(this).children().attr('value'));
+        });
         users.forEach(function(user) {
-          appendUserToSearchResult(user);
+          var test = String(user.id);
+          if (nowChatMembers.indexOf(test) == -1) {
+            appendUserToSearchResult(user);
+          }
         });
       }
       else {
