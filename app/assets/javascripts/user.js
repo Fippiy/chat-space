@@ -48,8 +48,8 @@ $(function() {
           nowChatMembers.push($(this).children().attr('value'));
         });
         users.forEach(function(user) {
-          var test = String(user.id);
-          if (nowChatMembers.indexOf(test) == -1) {
+          var addUserId = String(user.id);
+          if (nowChatMembers.indexOf(addUserId) == -1) {
             appendUserToSearchResult(user);
           }
         });
