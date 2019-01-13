@@ -37,8 +37,15 @@ $(function() {
     .done(function(users) {
       userSearchList.empty();
       if (users.length !== 0) {
+        var nowChatMembers = [];
+        $(".chat-group-user").each(function() {
+          nowChatMembers.push($(this).children().attr('value'));
+        });
         users.forEach(function(user) {
-          appendUserToSearchResult(user);
+          var addUserId = String(user.id);
+          if (nowChatMembers.indexOf(addUserId) == -1) {
+            appendUserToSearchResult(user);
+          }
         });
       }
       else {
