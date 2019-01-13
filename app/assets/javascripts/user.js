@@ -1,12 +1,6 @@
 $(function() {
 
   var userSearchList = $("#user-search-result");
-  // var userOutputList = $('.chat-group-user input');
-  // var userOutputList = $('.chat-group-user').children().attr('class');
-  // var userOutputList = $('.chat-group-user').attr('id');
-  // console.log(userOutputList);
-
-  // var userOutputList = $('.nowChatMember').attr("value");
 
   function appendUserToSearchResult(user) {
     var appendUserSearchResultHTML = `<div class="chat-group-user clearfix">
