@@ -50,26 +50,28 @@ $(function() {
     var regExpGroupMessagePath = RegExp(/\/groups\/[0-9]+\/messages/);
     if(href.match(regExpGroupMessagePath)) {
       var lastMessageId = $(".main__body--box").last().attr("message_id");
-      $.ajax({
-        url: href,
-        type: 'GET',
-        data: {
-          message: {id: lastMessageId}
-        },
-        dataType: 'json',
-        processData: true,
-        contentType: false
-      })
-      .done(function(messages){
-        if (messages.length !== 0) {
-          messages.forEach(function(message) {
-            appendContent(message);
-          });
-        }
-      })
-      .fail(function() {
-        alert('通信に失敗しました');
-      });
+      if (lastMessageId > 0) {
+        $.ajax({
+          url: href,
+          type: 'GET',
+          data: {
+            message: {id: lastMessageId}
+          },
+          dataType: 'json',
+          processData: true,
+          contentType: false
+        })
+        .done(function(messages){
+          if (messages.length !== 0) {
+            messages.forEach(function(message) {
+              appendContent(message);
+            });
+          }
+        })
+        .fail(function() {
+          // alert('通信に失敗しました');
+        });
+      }
     }
   },5000);
 });
