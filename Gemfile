@@ -72,6 +72,7 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-turbolinks'
+gem 'rails-observers'
 
 group :development do
   gem 'rspec'
