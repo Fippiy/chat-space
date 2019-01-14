@@ -6,6 +6,8 @@ require 'capistrano/deploy'
 
 # Load the SCM plugin appropriate to your project:
 #
+require 'uglifier'
+
 # require "capistrano/scm/hg"
 # install_plugin Capistrano::SCM::Hg
 # or
@@ -34,8 +36,6 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 # require 'capistrano/passenger'
 require 'capistrano3/unicorn'
-
-require 'uglifier'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
