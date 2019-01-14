@@ -49,7 +49,7 @@ set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
 after 'deploy:publishing', 'deploy:restart'
-namescape :deploy do
+namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
