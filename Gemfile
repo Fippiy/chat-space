@@ -43,10 +43,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
 
-  gem 'capistrano'
+  gem 'capistrano', '3.1.0'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails'
+  gem 'capistrano-rails', '~> 1.1.3'
   gem 'capistrano3-unicorn'
 end
 
