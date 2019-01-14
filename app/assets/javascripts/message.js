@@ -5,7 +5,17 @@ $(function() {
   function appendContent(message) {
     var html_body =
       message.image == null ? message.text : message.text + "<img src=" + message.image + ">";
-    var html = "test"
+    var html = `<div class="  main__body--box clearfix" message_id="${ message.id }">
+                  <li class="message-nickname">
+                    ${ message.nickname }
+                  </li>
+                  <li class="message-date">
+                    ${ message.created_at }
+                  </li>
+                  <li class="message-text">
+                    ${ html_body }
+                  </li>
+                </div>`
     message_list.append(html);
     $('html, body').scrollTop($(document).height());
   }
