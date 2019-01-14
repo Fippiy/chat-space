@@ -5,7 +5,6 @@ set :application, 'chat-space'
 set :repo_url, 'git@github.com:Fippiy/chat-space.git'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
@@ -34,7 +33,6 @@ set :rbenv_ruby, '2.5.1'
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -54,4 +52,3 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
-set :log_level, :debug
