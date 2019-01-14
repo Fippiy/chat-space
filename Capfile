@@ -6,8 +6,6 @@ require 'capistrano/deploy'
 
 # Load the SCM plugin appropriate to your project:
 #
-require 'uglifier'
-
 # require "capistrano/scm/hg"
 # install_plugin Capistrano::SCM::Hg
 # or
