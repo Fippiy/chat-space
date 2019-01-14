@@ -6,7 +6,7 @@ $(function() {
     var html_body =
       message.image == null ? `${ message.text }`
       : `${ message.text }<img src="${ message.image }">`;
-    var html = `<div class="  main__body--box clearfix" message_id="${ message.id }">
+    var html = `<div class="main__body--box clearfix" message_id="${ message.id }">
                   <li class="message-nickname">
                     ${ message.nickname }
                   </li>
