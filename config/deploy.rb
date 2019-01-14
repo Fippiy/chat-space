@@ -54,4 +54,4 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
-set :pty, true
+set :log_level, :debug
