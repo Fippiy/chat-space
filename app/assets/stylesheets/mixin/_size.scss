@@ -1,0 +1,3 @@
+@mixin main-width($SideWidth){
+  width: calc(100% - #{$SideWidth});
+}

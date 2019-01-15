@@ -1,0 +1,48 @@
+.side {
+  float: left;
+  width: $SideWidth;
+  position: fixed;
+  .side__header {
+    color: white;
+    height: $HeadHeight;
+    background-color: #253141;
+    &--name {
+      float:left;
+      font-size: 16px;
+      font-variant: bold;
+      line-height: $HeadHeight;
+      padding-left: $SidePadding;
+    }
+    &--icon {
+      float: right;
+      line-height: $HeadHeight;
+      font-size: 16px;
+      margin-right: $SidePadding;
+      .btn {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+  &__body {
+    color: white;
+    background-color: #2f3e51;
+    height: calc(100vh - #{$HeadHeight});
+    padding-top: 20px;
+    padding-left: $SidePadding;
+    &--group {
+      a {
+        text-decoration: none;
+        color: white;
+        .group-name {
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+        .group-message {
+          font-size: 11px;
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}

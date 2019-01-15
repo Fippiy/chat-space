@@ -1,0 +1,122 @@
+.main {
+  float: left;
+  padding-left: $SideWidth;
+  &__header {
+    position: fixed;
+    @include main-width($SideWidth);
+    height: $HeadHeight;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    &--top {
+      position: relative;
+      .chat-name {
+        padding-top: 35px;
+        font-size: 20px;
+        color: #333333;
+        padding-left: $MainPadding;
+      }
+      .edit {
+        text-decoration: none;
+        position: absolute;
+        top: 28px;
+        left: 100%;
+        transform: translateX(calc(-100% - 40px));
+        padding: 0 20px;
+        line-height: 40px;
+        height: 40px;
+        border: 1px solid #38AEF0;
+        color: #38AEF0;
+      }
+    }
+    &--bottom{
+      padding-top: 15px;
+      @include clearfix;
+      font-size: 12px;
+      color: #999999;
+      .member-head {
+        padding-left: $MainPadding;
+        float: left;
+        height: $HeadHeightMember;
+      }
+      .member-name {
+        height: $HeadHeightMember;
+        float: left;
+        .list-name {
+          font-style: italic;
+          height: $HeadHeightMember;
+          float: left;
+          list-style: none;
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+  &__body {
+    padding-top: $HeadHeight;
+    padding-bottom: $HeadHeight;
+    &--box {
+      @include clearfix;
+      padding-top: 46px;
+      li {
+        list-style: none;
+        float:left;
+        &.message-nickname {
+          font-size: 16px;
+          color: #434A54;
+          padding-left: $MainPadding;
+        }
+        &.message-date {
+          font-size: 10px;
+          padding-left: calc(#{$MainPadding}/2);
+        }
+        &.message-text {
+          clear: both;
+          font-size: 14px;
+          color: #434A54;
+          padding: $MainPadding;
+        }
+      }
+    }
+  }
+  &__footer {
+    position: fixed;
+    @include main-width($SideWidth);
+    background-color: #b8c3c7;
+    height: 90px;
+    bottom: 0;
+    &--form {
+      position: relative;
+      margin-top: 20px;
+      margin-left: 40px;
+      margin-bottom: 20px;
+      height: 50px;
+      #new_message {
+        input {
+          &[type="text"]{
+            float: left;
+            font-size: 20px;
+            height: 50px;
+            border: none;
+            width: 900px;
+            padding-left: 10px;
+            padding-right: 40px;
+          }
+        }
+        #upload-icon {
+          color: black;
+          @include position-absolute(50%,920px,-50%,0);
+        }
+        #message-submit {
+          line-height: 50px;
+          padding: 0 20px;
+          float: right;
+          margin-left: 15px;
+          margin-right: 40px;
+          background-color: #38aef0;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
