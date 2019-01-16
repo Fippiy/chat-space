@@ -70,6 +70,7 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-turbolinks'
+gem 'fog-aws'
 
 group :development do
   gem 'rspec'
