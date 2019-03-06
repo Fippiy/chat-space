@@ -34,14 +34,23 @@ $(function() {
       contentType: false
     })
     .done(function(message){
-      appendContent(message);
+      console.log(message.nickname);
+      // if (message.nickname == null) {
+        // console.log("true");
+      // } else {
+        // console.log("false");
+        appendContent(message);
+      // }
       $("#message_text").val("");
       $("#message_image").val("");
-      $("#message-submit").prop('disabled', false);
+      // $("#message-submit").prop('disabled', false);
     })
     .fail(function() {
-      $("#message-submit").prop('disabled', false);
+      // $("#message-submit").prop('disabled', false);
       alert('通信に失敗しました');
+    })
+    .always(function() {
+      $("#message-submit").prop('disabled', false);
     });
   });
 
