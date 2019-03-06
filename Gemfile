@@ -81,3 +81,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-turbolinks'
 gem 'fog-aws'
+
+source 'https://rubygems.org'
+ruby '2.5.1'
