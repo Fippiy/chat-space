@@ -44,7 +44,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
-  gem 'factory_bot_rails'
+  # gem 'factory_bot_rails'
   gem 'faker'
 end
 
@@ -81,3 +81,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-turbolinks'
 gem 'fog-aws'
+
+source 'https://rubygems.org'
+ruby '2.5.1'
