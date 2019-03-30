@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'aws5-bucket'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/aws5-bucket'
+  config.fog_directory  = ENV["S3_BUCKET_NAME"]
+  config.asset_host = ENV["S3_BUCKET_ADDRESS"]
 end
